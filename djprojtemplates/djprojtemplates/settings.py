@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'djprojtemplates.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///' + PROJECT_PATH.child('database.db'))
+        default='sqlite:///' + os.path.join(BASE_DIR, 'database.db'))
 }
 
 # Internationalization
