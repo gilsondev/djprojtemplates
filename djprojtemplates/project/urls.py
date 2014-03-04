@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 
-from django.views.generic.base import TemplateView
+from project.views import ProjectList
 
 urlpatterns = patterns('',
-    url(r'^$', TemplateView.as_view(template_name="project/project_list.html"), name='list'),
+    url(r'^$', ProjectList.as_view(), name='list'),
 )
