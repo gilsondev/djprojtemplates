@@ -29,7 +29,8 @@ class ProjectFormTest(TestCase):
 
     def test_fields(self):
         """Should have these fields"""
-        fields = ['name', 'description', 'license', 'repository', 'site']
+        fields = ['name', 'description', 'license',
+        'dj_version', 'repository', 'site']
         self.assertItemsEqual(fields, self.form.fields)
 
 
@@ -42,6 +43,7 @@ class ProjectModelTest(TestCase):
             name="Project Template",
             description="Description Test",
             license="GPL",
+            dj_version="django_15",
             repository="http://github.com/user/project",
             site="http://projectapp.com"
         )
