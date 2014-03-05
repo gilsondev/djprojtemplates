@@ -3,6 +3,8 @@
 from django import forms
 from django.utils.translation import ugettext as _
 
+from captcha.fields import CaptchaField
+
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, Field, HTML
 
@@ -11,6 +13,7 @@ from project.models import Project
 
 class ProjectForm(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea)
+    captcha = CaptchaField()
 
     helper = FormHelper()
     helper.layout = Layout(
@@ -36,6 +39,10 @@ class ProjectForm(forms.ModelForm):
         ),
         Div(
             Field('site', css_class='form-control'),
+            css_class='form-group'
+        ),
+        Div(
+            Field('captcha', css_class='form-control'),
             css_class='form-group'
         ),
         Div(
