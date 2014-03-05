@@ -47,7 +47,7 @@ class Project(models.Model):
     repository = models.URLField(_(u"Repository URL"))
     site = models.URLField(_(u"Site URL"), blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    is_published = models.BooleanField(default=False)
+    is_published = models.BooleanField(_(u"Published?"), default=False)
 
     # managers
     objects = models.Manager()
