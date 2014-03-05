@@ -56,4 +56,4 @@ class ProjectForm(forms.ModelForm):
 
     class Meta:
         model = Project
-        exclude = ('created_at', 'slug',)
+        exclude = ('created_at', 'slug', 'is_published',)
