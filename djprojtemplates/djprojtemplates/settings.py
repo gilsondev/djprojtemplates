@@ -107,3 +107,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 # Analytics
 GOOGLE_ANALYTICS_KEY = os.environ.get('GOOGLE_ANALYTICS_KEY', '')
 GOOGLE_ANALYTICS_DOMAIN = os.environ.get('GOOGLE_ANALYTICS_DOMAIN', '')
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
