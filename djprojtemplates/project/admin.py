@@ -6,10 +6,12 @@ from django.utils.translation import ugettext as _
 from project.models import Project
 
 
-def make_published(modeladmin, request, queryset):
+def publish(modeladmin, request, queryset):
     """Define project template to published"""
-    queryset.update(published=True)
-make_published.short_description = _(u"Mark selected project as published")
+    for item in queryset:
+        item.is_published = not item.is_published
+        item.save()
+publish.short_description = _(u"Publish/Unpublish project")
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -19,6 +21,6 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_filter = ['created_at', 'dj_version']
     date_hierarchy = 'created_at'
-    actions = [make_published]
+    actions = [publish]
 
 admin.site.register(Project, ProjectAdmin)
