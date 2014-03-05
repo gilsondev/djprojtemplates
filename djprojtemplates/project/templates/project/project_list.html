@@ -7,6 +7,9 @@
             <div class="panel-body text-center">
               <a href="#"><h3>{{ project.name }}</h3></a>
               <p>{{ project.description }}</p>
+              <p>
+                License: <span class="label label-default">{{ project.license }}</span>
+              </p>
               <a href="{{ project.repository }}" class="btn btn-primary">
                 <i class="fa fa-{{ project.repository_type }}"> {{ project.repository_name }}</i>
               </a>
