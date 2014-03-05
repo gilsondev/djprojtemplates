@@ -15,6 +15,7 @@ REPOSITORY_SERVICES = {
     'sourceforge.net': {'globe': 'Source Forge'}
 }
 
+
 class Project(models.Model):
 
     # Django Versions
@@ -95,4 +96,3 @@ class Project(models.Model):
     def repository_name(self):
         """Return repository service name"""
         return REPOSITORY_SERVICES.get(self.repository_parse()).values()[0]
-
