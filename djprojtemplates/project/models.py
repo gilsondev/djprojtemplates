@@ -47,8 +47,13 @@ class Project(models.Model):
         super(Project, self).save(*args, **kwargs)
 
     class Meta:
+        verbose_name = _(u"project")
+        verbose_name_plural = _(u"projects")
         db_table = "project"
         ordering = ['created_at']
+
+    def __unicode__(self):
+        return self.name
 
     def do_unique_slug(self):
         """
