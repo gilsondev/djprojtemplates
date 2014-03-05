@@ -45,3 +45,4 @@ man
 .env
 .ropeproject/
 .DS_Store
+local_settings.py

@@ -30,7 +30,7 @@ class ProjectFormTest(TestCase):
     def test_fields(self):
         """Should have these fields"""
         fields = ['name', 'description', 'license',
-        'dj_version', 'repository', 'site']
+                  'dj_version', 'repository', 'site']
         self.assertItemsEqual(fields, self.form.fields)
 
 
