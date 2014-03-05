@@ -97,6 +97,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Crispy Forms
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 # Analytics
 GOOGLE_ANALYTICS_KEY = os.environ.get('GOOGLE_ANALYTICS_KEY', '')
 GOOGLE_ANALYTICS_DOMAIN = os.environ.get('GOOGLE_ANALYTICS_DOMAIN', '')

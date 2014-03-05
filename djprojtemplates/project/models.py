@@ -1,9 +1,19 @@
 # -*- coding: utf-8 -*-
 
+from urlparse import urlparse
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 
+
+# Repository Services
+REPOSITORY_SERVICES = {
+    'github.com': {'github': 'Github'},
+    'bitbucket.com': {'bitbucket': 'Bitbucket'},
+    'code.google.com': {'globe': 'Google Code'},
+    'sourceforge.net': {'globe': 'Source Forge'}
+}
 
 class Project(models.Model):
 
@@ -27,7 +37,7 @@ class Project(models.Model):
     dj_version = models.CharField(_(u"Django Version"), max_length=13,
                                   choices=DJANGO_VERSIONS_CHOICES)
     repository = models.URLField(_(u"Repository URL"))
-    site = models.URLField(_(u"Site URL"))
+    site = models.URLField(_(u"Site URL"), blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
@@ -63,3 +73,26 @@ class Project(models.Model):
 
             slug = '%s-%s' % (orig_slug, counter)
             counter += 1
+
+    # TODO: Move methods for custom templatetag
+    def repository_parse(self):
+        """Use urlparse to split URL repository
+        and return the service name. For instance:
+
+            http://github.com/username/project
+
+        He must return 'github'
+        """
+        url = urlparse(self.repository)
+        return url.hostname
+
+    @property
+    def repository_type(self):
+        """Return type repository"""
+        return REPOSITORY_SERVICES.get(self.repository_parse()).keys()[0]
+
+    @property
+    def repository_name(self):
+        """Return repository service name"""
+        return REPOSITORY_SERVICES.get(self.repository_parse()).values()[0]
+
