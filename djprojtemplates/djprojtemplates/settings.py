@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'south',
     'crispy_forms',
+    'captcha',
 
     'core',
     'project',
