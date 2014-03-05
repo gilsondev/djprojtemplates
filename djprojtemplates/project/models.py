@@ -40,6 +40,7 @@ class Project(models.Model):
     repository = models.URLField(_(u"Repository URL"))
     site = models.URLField(_(u"Site URL"), blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    published = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         self.do_unique_slug()
