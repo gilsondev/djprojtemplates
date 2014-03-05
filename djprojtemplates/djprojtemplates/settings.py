@@ -27,7 +27,7 @@ SECRET_KEY = '&7#p&@3n$@bywi_p4+il)5$s@yny7t3&82bj!)+0mwg&(z!m27'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = TEMPLATE_DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = ['djprojtemplates.herokuapp.com']
+ALLOWED_HOSTS = ['djprojectemplates.herokuapp.com']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'crispy_forms',
 
     'core',
+    'project',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS += (
@@ -74,7 +75,7 @@ WSGI_APPLICATION = 'djprojtemplates.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///' + PROJECT_PATH.child('database.db'))
+        default='sqlite:///' + os.path.join(BASE_DIR, 'database.db'))
 }
 
 # Internationalization
@@ -95,6 +96,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+# Crispy Forms
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Analytics
 GOOGLE_ANALYTICS_KEY = os.environ.get('GOOGLE_ANALYTICS_KEY', '')

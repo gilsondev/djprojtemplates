@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block main %}
+    {% for project in object_list %}
+      <div class="col-md-4 portfolio-item">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <a href="#"><h3>{{ project.name }}</h3></a>
+              <p>{{ project.description }}</p>
+              <p>
+                License: <span class="label label-default">{{ project.license }}</span>
+              </p>
+              <a href="{{ project.repository }}" class="btn btn-primary">
+                <i class="fa fa-{{ project.repository_type }}"> {{ project.repository_name }}</i>
+              </a>
+              {% if project.site %}
+                <a href="{{ project.site }}" class="btn btn-primary"><i class="fa fa-globe">Project Site</i></a>
+              {% endif %}
+            </div>
+          </div>
+      </div>
+    {% endfor %}
+{% endblock main %}
