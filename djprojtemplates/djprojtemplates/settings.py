@@ -27,7 +27,7 @@ SECRET_KEY = '&7#p&@3n$@bywi_p4+il)5$s@yny7t3&82bj!)+0mwg&(z!m27'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = TEMPLATE_DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = ['djprojtemplates.herokuapp.com']
+ALLOWED_HOSTS = ['djprojectemplates.herokuapp.com']
 
 
 # Application definition
