@@ -10,7 +10,7 @@ from django.template.defaultfilters import slugify
 # Repository Services
 REPOSITORY_SERVICES = {
     'github.com': {'github': 'Github'},
-    'bitbucket.com': {'bitbucket': 'Bitbucket'},
+    'bitbucket.org': {'bitbucket': 'Bitbucket'},
     'code.google.com': {'globe': 'Google Code'},
     'sourceforge.net': {'globe': 'Source Forge'}
 }
