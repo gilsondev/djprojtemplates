@@ -46,7 +46,7 @@ class ProjectModelTest(TestCase):
             dj_version="django_15",
             repository="http://github.com/user/project",
             site="http://projectapp.com",
-            published=False
+            is_published=False
         )
 
     def test_create(self):

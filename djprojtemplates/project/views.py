@@ -10,6 +10,10 @@ from project.forms import ProjectForm
 class ProjectList(ListView):
     model = Project
 
+    def get_queryset(self):
+        """List projects published"""
+        return Project.published.all()
+
 
 class ProjectNew(CreateView):
     model = Project

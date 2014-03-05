@@ -16,6 +16,13 @@ REPOSITORY_SERVICES = {
 }
 
 
+class ProjectPublishedManager(models.Manager):
+    """Manager to list all projects published"""
+    def get_queryset(self):
+        return super(ProjectPublishedManager,
+                     self).get_queryset().filter(is_published=True)
+
+
 class Project(models.Model):
 
     # Django Versions
@@ -40,7 +47,11 @@ class Project(models.Model):
     repository = models.URLField(_(u"Repository URL"))
     site = models.URLField(_(u"Site URL"), blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    published = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=False)
+
+    # managers
+    objects = models.Manager()
+    published = ProjectPublishedManager()
 
     def save(self, *args, **kwargs):
         self.do_unique_slug()

@@ -15,7 +15,7 @@ make_published.short_description = _(u"Mark selected project as published")
 class ProjectAdmin(admin.ModelAdmin):
     model = Project
     list_display = ['name', 'license', 'dj_version',
-                    'repository_name', 'created_at', 'published']
+                    'repository_name', 'created_at', 'is_published']
     search_fields = ('name',)
     list_filter = ['created_at', 'dj_version']
     date_hierarchy = 'created_at'
