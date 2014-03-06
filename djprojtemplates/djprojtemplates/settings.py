@@ -112,7 +112,7 @@ GOOGLE_ANALYTICS_KEY = os.environ.get('GOOGLE_ANALYTICS_KEY', '')
 GOOGLE_ANALYTICS_DOMAIN = os.environ.get('GOOGLE_ANALYTICS_DOMAIN', '')
 
 # Django Storages
-if DEBUG is False:
+if not DEBUG:
     DEFAULT_FILE_STORAGE = 'djprojtemplates.s3utils.MediaRootS3BotoStorage'
     STATICFILES_STORAGE = 'djprojtemplates.s3utils.StaticRootS3BotoStorage'
 
